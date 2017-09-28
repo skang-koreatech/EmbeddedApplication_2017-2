@@ -33,7 +33,10 @@ def camera():
                 cv2.imwrite(filename , img)
                 time.sleep(1)
                 detect_label(filename)
-
+		cam.release()
+		cv2.destroyAllWindows()
+		GPIO.cleanup()
+		
     except KeyboardInterrupt:
         cam.release()
         cv2.destroyAllWindows()
