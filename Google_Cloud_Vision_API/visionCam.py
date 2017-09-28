@@ -25,17 +25,19 @@ def camera():
         while True:
             ret, img = cam.read()
             cv2.imshow('Cam', img)
+            
             key = cv2.waitKey(10)
             if key == 27:
-                break
+            	cam.release()
+            	cv2.destroyAllWindows()
+            	GPIO.cleanup()
+            	break
+
             if button() == True:
                 filename = getDatetime() + '.jpg'
                 cv2.imwrite(filename , img)
-                time.sleep(1)
+                time.sleep(0.5)
                 detect_label(filename)
-		cam.release()
-		cv2.destroyAllWindows()
-		GPIO.cleanup()
 		
     except KeyboardInterrupt:
         cam.release()
