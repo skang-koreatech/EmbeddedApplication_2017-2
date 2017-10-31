@@ -1,0 +1,26 @@
+<html>
+<head>
+        <title>RGB LED STATUS</title>
+</head>
+
+<body>
+        <h1>RGB led status</h1>
+        {% for led in leds %}
+        <p>
+        {{ leds[led].name }}
+        {% if leds[led].state == True %}
+                is currently on (<a href="/{{led}}/off"> turn off</a>)
+        {% else %}
+                is currently off (<a href="/{{led}}/on"> turn on</a>)
+        {% endif %}
+        </p>
+
+        {% endfor %}
+
+        {% if msg %}
+        <h2>{{msg}}</h2>
+        {% endif %}
+
+</body>
+
+</html>
